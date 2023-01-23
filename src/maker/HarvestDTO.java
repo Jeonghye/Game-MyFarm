@@ -1,10 +1,13 @@
+package maker;
 
-public class HarvestInven {
+public class HarvestDTO {
 	
 	private String harvestName;
 	private int harvestCount = 0;
 	
-	public HarvestInven(String harvestName, int harvestCount) {
+	public HarvestDTO() {}
+	
+	public HarvestDTO(String harvestName, int harvestCount) {
 		this.harvestName = harvestName;
 		this.harvestCount = harvestCount;
 	}
