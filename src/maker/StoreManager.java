@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class StoreManager extends Store {
 
-	String[] cropsArr = super.getCropsArr();
-	int[] seedPrice = super.getSeedPrice();
-	int[] sellPrice = super.getSellPrice();
-	String[] itemArr = super.getItemArr();
-	int[] itemPrice = super.getItemPrice();
+	private String[] cropsArr = super.getCropsArr();
+	private int[] seedPrice = super.getSeedPrice();
+	private int[] sellPrice = super.getSellPrice();
+	private String[] itemArr = super.getItemArr();
+	private int[] itemPrice = super.getItemPrice();
 
 	Scanner sc = new Scanner(System.in);
 

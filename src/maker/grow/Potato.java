@@ -2,7 +2,7 @@ package maker.grow;
 
 public class Potato extends Crops {
 	
-	String name = "감자";
+	private String name = "감자";
 	private final int FULL = 100;
 
 	@Override

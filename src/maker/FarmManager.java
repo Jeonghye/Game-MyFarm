@@ -6,8 +6,8 @@ import maker.grow.GrowManager;
 
 public class FarmManager extends Farm {
 
-	public String[][] field = super.getField();
-	public String[][] finishField = super.getFinishField();
+	private String[][] field = super.getField();
+	private String[][] finishField = super.getFinishField();
 	private int index = 0; // field 인덱스
 
 	Scanner sc = new Scanner(System.in);
