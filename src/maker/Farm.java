@@ -2,8 +2,8 @@ package maker;
 
 public class Farm {
 
-	private String[][] field = new String[5][];
-	private String[][] finishField = new String[5][];
+	private String[][] field = new String[10][];
+	private String[][] finishField = new String[10][];
 	
 	public String[][] getField() {
 		return field;

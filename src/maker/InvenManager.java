@@ -1,12 +1,10 @@
 package maker;
 
-public class InvenManager {
+public class InvenManager extends Inventory {
 
-	Inventory inven = new Inventory();
-
-	public String[] items = inven.getItems();
-	public SeedDTO[] seeds = inven.getSeeds();
-	public HarvestDTO[] harvests = inven.getHarvests();
+	private String[] items = super.getItems();
+	private SeedDTO[] seeds = super.getSeeds();
+	private HarvestDTO[] harvests = super.getHarvests();
 
 	/**
 	 * 아이템 획득 시 인벤토리에 저장
@@ -20,23 +18,7 @@ public class InvenManager {
 			}
 		}
 
-		inven.setItems(items);
-	}
-
-	/**
-	 * 아이템 지우기
-	 */
-	public void deleteItem(String name) {
-
-		for (int i = 0; i < items.length; i++) {
-			for (int j = 1; j < i; j++) {
-				if(name == items[i]) {
-					String temp;
-					temp = items[i];
-					items[i] = items[j];
-				}
-			}
-		}
+		super.setItems(items);
 	}
 
 	/**
@@ -67,33 +49,33 @@ public class InvenManager {
 			}
 		}
 
-		inven.setSeeds(seeds);
+		super.setSeeds(seeds);
 	}
 
 	/**
 	 * 인벤토리에서 씨앗 삭제
 	 */
 	public void removeSeed(int no) {
-		
+
 		int index = no - 1;
-		
-		SeedDTO[] temp = new SeedDTO[1];
-		temp[0] = seeds[index];
+
+		SeedDTO[] temp = new SeedDTO[10];
 		seeds[index] = null;
-		
+
 		if(seeds[index + 1] != null) {
-			for(int i = 0; i < seeds.length; i++) {
-				if((index + i) < seeds.length) {
-					seeds[index] = seeds[index + i];
-					seeds[index + i] = seeds[index + i + 1];
-					break;
+			int value = 0;
+			for(int i = 0; i < temp.length; i++) {
+				if(seeds[i] == null) {
+					continue;
 				} else {
-					seeds[index + i] = null;
+					temp[value] = seeds[i];
+					value++;
 				}
 			}
+			seeds = temp;
 		}
 
-		inven.setSeeds(seeds);
+		super.setSeeds(seeds);
 	}
 
 
@@ -119,10 +101,9 @@ public class InvenManager {
 	/**
 	 * 수확물 획득 시 인벤토리에 저장
 	 */
-	public void insertHarvest(String[][] arr, int no) {
+	public void insertHarvest(String[][] arr, int no, int count) {
 
-		String name = arr[no][0];
-		int count = arr[no].length;
+		String name = arr[no - 1][0];
 		
 		for(int i = 0; i < harvests.length; i++) {
 			if(harvests[i] == null) {
@@ -131,32 +112,33 @@ public class InvenManager {
 			}
 		}
 
-		inven.setHarvests(harvests);
+		super.setHarvests(harvests);
 	}
 
 	/**
 	 * 인벤토리에서 수확물 삭제
 	 */
-	public void removeHarvest(HarvestDTO[] arr, int index) {
+	public void removeHarvest(int no) {
 
-		if(arr[index] == null) {
-			arr[index - 1] = null;
-		}
+		int index = no - 1;
 
-		HarvestDTO[] temp = new HarvestDTO[1];
+		HarvestDTO[] temp = new HarvestDTO[10];
+		harvests[index] = null;
 
-		for(int i = 0; i < arr.length; i++) {
-			for(int j = i + 1; j < arr.length; j++) {
-				if(arr[index - 1] == arr[i]) {
-					temp[0] = arr[i];
-					arr[i] = arr[j];
-					arr[j] = new HarvestDTO();
-					break;
+		if(harvests[index + 1] != null) {
+			int value = 0;
+			for(int i = 0; i < temp.length; i++) {
+				if(harvests[i] == null) {
+					continue;
+				} else {
+					temp[value] = harvests[i];
+					value++;
 				}
 			}
+			harvests = temp;
 		}
 
-		inven.setHarvests(arr);
+		super.setHarvests(harvests);
 	}
 
 	/**

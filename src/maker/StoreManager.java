@@ -2,15 +2,13 @@ package maker;
 
 import java.util.Scanner;
 
-public class StoreManager {
+public class StoreManager extends Store {
 
-	Store store = new Store();
-
-	String[] cropsArr = store.getCropsArr();
-	int[] seedPrice = store.getSeedPrice();
-	String[] itemArr = store.getItemArr();
-	int[] itemPrice = store.getItemPrice();
-	int[] sellPrice = store.getSellPrice();
+	String[] cropsArr = super.getCropsArr();
+	int[] seedPrice = super.getSeedPrice();
+	int[] sellPrice = super.getSellPrice();
+	String[] itemArr = super.getItemArr();
+	int[] itemPrice = super.getItemPrice();
 
 	Scanner sc = new Scanner(System.in);
 
@@ -136,43 +134,39 @@ public class StoreManager {
 
 	/* 수확물 판매 메소드 */
 	public void sellHarvest(Character character, InvenManager im) {
+
+		HarvestDTO[] harvests = im.getHarvests();
+
 		System.out.println("상점주인 : 드디어 수확을 했나보군! 무엇을 판매할건가?");
 		System.out.println("━━━━━━━━━━━━━━━━ 판/매/가/능 ━━━━━━━━━━━━━━━━");
 		im.showHarvest();
 		System.out.print("판매할 수확물의 번호 입력 (취소 : 0): ");
 		int no = sc.nextInt();
+		
+		int num = no - 1;
+		int price = 0;
 
 		if(no == 0) {
 			System.out.println("판매를 취소합니다.");
-		} else {
-			for(int i = 0; i < im.harvests.length; i++) {
-				if(im.harvests[i] == null) {
-					if(no == i) {
-						System.out.println("상점주인 : 저런, 팔 수 있는 게 없군!");
-						break;
-					}
-				}
-			}
+			return;
 		}
-
-		if(im.harvests[0] == null) {
+		
+		if(harvests[0] == null) {
 			System.out.println("상점주인 : 우리 상점은 공기는 취급 안하네");
+		} else if(harvests[num] == null) {
+			System.out.println("상점주인 : 저런, 팔 수 있는 게 없군!");
+			return;
 		} else {
-			System.out.println(im.harvests[no].getInformation() + "를 판매합니다.");
-			int price = 0;
-
+			System.out.println(harvests[num].getInformation() + "를 판매합니다.");
 			for (int i = 0; i < cropsArr.length; i++) {
-				if(im.harvests[no].getName().equals(cropsArr[i])) {
-					price = im.harvests[no].getCount() * seedPrice[i];
+				if(harvests[num].getName().equals(cropsArr[i])) {
+					price = harvests[num].getCount() * sellPrice[num];
 					break;
 				}
-
-				System.out.println("총합 " + price + "G 입니다.");
 			}
+			System.out.println("총합 " + price + "G 입니다.");
+			character.getMoney(price);
 		}
-
-
-
 	}
 
 

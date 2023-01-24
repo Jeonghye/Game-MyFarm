@@ -19,7 +19,7 @@ public class GameManager {
 	}
 
 	public void startGame() {
-		setYourName();
+//		setYourName();
 		mainMenu();
 	}
 

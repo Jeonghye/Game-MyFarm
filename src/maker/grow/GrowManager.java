@@ -4,19 +4,19 @@ import java.util.Scanner;
 
 import maker.FarmManager;
 
-public class GrowManager {
+public class GrowManager extends FarmManager {
 
 	private int type = 0; // 선택했던 배열의 작물종류
 	private int no = 0; // 선택(가져온)한 배열 행 인덱스
 	private int index = 0; //배열 행 인덱스
-	public String[][] field = new String[5][];
-	public String[][] finishField = new String[5][];
+	public String[][] field = super.getField();
+	public String[][] finishField = super.getFinishField();
 	private Crops[] crops = new Crops[] {new Potato(), 
 			new SweetPotato(),
 			new Onion(),
 			new Garilc(),
 			new Pumpkin()};
-
+	
 	Scanner sc = new Scanner(System.in);
 
 	public void setType(int type) {
@@ -27,20 +27,21 @@ public class GrowManager {
 		this.no = no;
 	}
 
-	public void growStart(FarmManager fm) {
-		setField(fm);
-		growMenu(fm);
+	public void growStart() {
+		growMenu();
 	}
 
-	public void setField(FarmManager fm) {
-		this.field = fm.field;
-		this.finishField = fm.finishField;
+	public String[][] getField() {
+		return this.field;
+	}
+	
+	public String[][] getFinishField() {
+		return this.finishField;
 	}
 
-	public void growMenu(FarmManager fm) {
+	public void growMenu() {
 
 		while(true) {
-
 			System.out.println("━━━━━━━━━━━━━━━━━━━ /#/ ━━━━━━━━━━━━━━━━━━━");
 			System.out.println("선택중인 밭 : " + (no + 1) + ". " + 
 					crops[type].getName());
@@ -81,25 +82,37 @@ public class GrowManager {
 	 * 수확 가능 시 수확가능필드에 넣는다.
 	 */
 	public void isFinish() {
+		
+		String[][] temp = new String[10][];
 
 		if(crops[type].finish()) {
 
 			System.out.println("수확이 가능합니다.");
 			finishField[index] = field[no];
 			field[no] = null;
-
 			index++;
-			System.out.println("어서 수확해봅시다!");
 
 			if(field[no + 1] != null) {
-				for(int i = 0; i < field.length; i++) {
-					field[i] = field[i + 1];
-					field[i + 1] = null;
+				int value = 0;
+				for(int i = 0; i < temp.length; i++) {
+					if(field[i] == null) {
+						continue;
+					} else {
+						temp[value] = field[i];
+						value++;
+					}
 				}
+				field = temp;
 			}
+			super.setField(field);
+			super.setFinishField(finishField);
+			System.out.println("어서 수확해봅시다!");
 		}
 	}
 
+	/**
+	 * 종류별 물을 뿌린다.
+	 */
 	public void water() {
 
 		if(crops[type] instanceof Potato) {
@@ -123,6 +136,9 @@ public class GrowManager {
 
 	}
 
+	/**
+	 * 종류별 기다린다.
+	 */
 	public void await() {
 
 		if(crops[type] instanceof Potato) {
@@ -146,6 +162,9 @@ public class GrowManager {
 
 	}
 
+	/**
+	 * 종류별 응원한다.
+	 */
 	public void cheer() {
 
 		if(crops[type] instanceof Potato) {
