@@ -27,6 +27,6 @@
 ![커뮤니케이션 다이어그램 이미지](https://github.com/Jeonghye/Game-MyFarm/blob/master/img1.png)
 
 ## 클래스 다이어그램
-![클래스 다이어그램 이미지](https://github.com/Jeonghye/Game-MyFarm/commit/f1628b94e55ea25b8c8c5eb834c940496ae92788)
+![클래스 다이어그램 이미지](https://github.com/Jeonghye/Game-MyFarm/blob/master/img2.png)
 
 
