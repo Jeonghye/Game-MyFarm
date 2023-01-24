@@ -19,17 +19,9 @@ public class SeedDTO {
 	public int getCount() {
 		return count;
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-
+	
 	public String getInformation() {
-		return this.name + "/" + this.count + "개";
+		return name + "씨앗(" + count + "개)";
 	}
 
 }

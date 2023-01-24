@@ -2,18 +2,26 @@ package maker;
 
 public class HarvestDTO {
 	
-	private String harvestName;
-	private int harvestCount = 0;
+	private String name;
+	private int count = 0;
 	
 	public HarvestDTO() {}
 	
-	public HarvestDTO(String harvestName, int harvestCount) {
-		this.harvestName = harvestName;
-		this.harvestCount = harvestCount;
+	public HarvestDTO(String name, int count) {
+		this.name = name;
+		this.count = count;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public int getCount() {
+		return count;
+	}
+	
 	public String getInformation() {
-		return harvestName + "/" + harvestCount + "개";
+		return name + "(" + count + "개)";
 	}
 
 }

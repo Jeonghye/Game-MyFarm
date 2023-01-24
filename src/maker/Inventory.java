@@ -3,8 +3,8 @@ package maker;
 public class Inventory {
 	
 	private String[] items = new String[] {"괭이", "물뿌리개","","","","",""};
-	private SeedDTO[] seeds = new SeedDTO[10];
-	private HarvestDTO[] harvests = new HarvestDTO[10];
+	private SeedDTO[] seeds = new SeedDTO[5];
+	private HarvestDTO[] harvests = new HarvestDTO[5];
 	
 	public String[] getItems() {
 		return items;
