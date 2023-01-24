@@ -81,10 +81,10 @@ public class StoreManager extends Store {
 				System.out.println("결제완료되셨습니다. 구매해주셔서 감사합니다.");
 				im.insertSeed(cropsArr[no - 1], count);
 				character.payMoney(price);
-				System.out.println("현재 소지 골드는 " + character.money() + "입니다.");
+				System.out.println("현재 소지 골드는 " + character.money() + "G 입니다.");
 				return;
 			} else {
-				System.out.println("골드가 부족합니다. 현재 소지 골드는 " + character.money() + "입니다.");
+				System.out.println("골드가 부족합니다. 현재 소지 골드는 " + character.money() + "G 입니다.");
 			}
 		} else {
 			System.out.println("상점주인 : 대체 뭘 사겠다는 건가? 제대로 고르시게");
@@ -112,10 +112,10 @@ public class StoreManager extends Store {
 				System.out.println("결제완료되셨습니다. 구매해주셔서 감사합니다.");
 				im.insertItem(itemArr[no - 1]);
 				character.payMoney(price);
-				System.out.println("현재 소지 골드는 " + character.money() + "입니다.");
+				System.out.println("현재 소지 골드는 " + character.money() + "G 입니다.");
 				return;
 			} else {
-				System.out.println("골드가 부족합니다. 현재 소지 골드는 " + character.money() + "입니다.");
+				System.out.println("골드가 부족합니다. 현재 소지 골드는 " + character.money() + "G 입니다.");
 			}
 		} else {
 			System.out.println("상점주인 : 대체 뭘 사겠다는 건가? 제대로 고르시게");

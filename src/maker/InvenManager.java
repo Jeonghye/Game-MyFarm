@@ -30,7 +30,7 @@ public class InvenManager extends Inventory {
 
 		for(int i = 0; i < items.length; i++) {
 			if(items[i] != "") {
-				System.out.print((i + 1) + ". " + items[i] + " ");
+				System.out.print((i + 1) + "." + items[i] + " ");
 			}
 		}
 
@@ -91,7 +91,7 @@ public class InvenManager extends Inventory {
 				System.out.print(" ");
 				break;
 			} else if(seeds[i] != null){
-				System.out.print((i + 1) + ". " + seeds[i].getInformation() + " ");
+				System.out.print((i + 1) + "." + seeds[i].getInformation() + " ");
 			}
 		}
 
@@ -153,7 +153,7 @@ public class InvenManager extends Inventory {
 				System.out.print(" ");
 				break;
 			} else if(harvests[i] != null){
-				System.out.print((i + 1) + ". " + harvests[i].getInformation() + " ");
+				System.out.print((i + 1) + "." + harvests[i].getInformation() + " ");
 			}
 		}
 
